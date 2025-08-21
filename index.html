@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bhavani Kumar Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0 20px;
+      color: #1f2937; /* dark slate */
+      background: linear-gradient(135deg, #2dd4bfcc 40%, #f87171cc 90%), 
+                  url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Overlay to improve readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(45,212,191,0.85) 40%, rgba(248,113,113,0.85) 90%);
+      z-index: -1;
+    }
+    header {
+      background-color: rgba(6, 182, 212, 0.9); /* teal */
+      color: #f9fafb;
+      text-align: center;
+      padding: 35px 15px;
+      margin-bottom: 45px;
+      border-radius: 0 0 20px 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 0.07em;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      background-color: rgba(255, 255, 255, 0.97);
+      padding: 35px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      backdrop-filter: saturate(180%) blur(10px);
+      transition: box-shadow 0.3s ease;
+    }
+    .container:hover {
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+    section {
+      margin-bottom: 55px;
+    }
+    section h2 {
+      color: #0891b2; /* darker teal */
+      border-bottom: 4px solid #fb7185; /* coral */
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 1.9rem;
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+    /* Adding subtle icon before headings */
+    section h2::before {
+      content: "💻";
+      position: absolute;
+      left: -35px;
+      font-size: 1.8rem;
+      top: 2px;
+      opacity: 0.6;
+    }
+    /* For Certificates and Coding Clubs headings, use different icons */
+    section.certificates h2::before {
+      content: "📜";
+    }
+    section.coding-clubs h2::before {
+      content: "👥";
+    }
+    /* Skills bars */
+    .skill {
+      margin-bottom: 22px;
+    }
+    .skill-name {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: #0891b2;
+    }
+    .skill-bar {
+      background: #d1fae5;
+      border-radius: 30px;
+      overflow: hidden;
+      height: 26px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .skill-level {
+      height: 100%;
+      background: linear-gradient(90deg, #0891b2 0%, #5eead4 100%);
+      width: 0;
+      text-align: right;
+      padding-right: 14px;
+      line-height: 26px;
+      color: white;
+      font-weight: 800;
+      border-radius: 30px 0 0 30px;
+      transition: width 1.5s ease-in-out;
+      font-size: 1rem;
+      user-select: none;
+      box-shadow: 0 2px 6px rgba(8,145,178,0.7);
+      letter-spacing: 0.03em;
+    }
+    /* Projects */
+    .projects ul,
+    .certificates ul,
+    .coding-clubs ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .projects li,
+    .certificates li,
+    .coding-clubs li {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 1.05rem;
+      color: #334155;
+    }
+    .projects li span,
+    .certificates li span,
+    .coding-clubs li span {
+      flex: 1 1 auto;
+      min-width: 200px;
+    }
+    /* Button styling */
+    .btn {
+      background-color: #0891b2;
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      display: inline-block;
+      box-shadow: 0 4px 9px rgba(8, 145, 178, 0.5);
+      letter-spacing: 0.05em;
+    }
+    .btn:hover, .btn:focus {
+      background-color: #065f73;
+      box-shadow: 0 6px 14px rgba(6, 95, 115, 0.7);
+      outline: none;
+      transform: translateY(-2px);
+    }
+    /* Contact buttons */
+    .contacts p {
+      font-size: 1.15rem;
+      margin: 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: #334155;
+    }
+    .contacts p strong {
+      width: 110px;
+      color: #0891b2;
+      font-weight: 700;
+    }
+    /* Responsive */
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .container {
+        padding: 25px 25px;
+      }
+      .projects li,
+      .certificates li,
+      .coding-clubs li {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 1rem;
+      }
+      .contacts p {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 1rem;
+      }
+      section h2::before {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bhavani Kumar Portfolio</h1>
+</header>
+
+<div class="container">
+
+  <section class="skills">
+    <h2>Skills</h2>
+    <div class="skill">
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar">
+        <div class="skill-level" style="width: 85%;">85%</div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">React.js</div>
+      <div class="skill-bar">
+        <div class="skill-level" style="width: 75%;">75%</div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">Node.js</div>
+      <div class="skill-bar">
+        <div class="skill-level" style="width: 65%;">65%</div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">Python</div>
+      <div class="skill-bar">
+        <div class="skill-level" style="width: 90%;">90%</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>
+        <a href="https://github.com/bhavanikumar/weather-app" target="_blank" rel="noopener" class="btn" aria-label="View Weather App Project on GitHub">View Project</a>
+        <span>Responsive Weather App using React and OpenWeather API.</span>
+      </li>
+      <li>
+        <a href="https://bhavanikumar.github.io/todo-list" target="_blank" rel="noopener" class="btn" aria-label="Live Demo of Todo List app">Live Demo</a>
+        <span>Simple and intuitive Todo List app with local storage support.</span>
+      </li>
+      <li>
+        <a href="https://github.com/bhavanikumar/blog-platform" target="_blank" rel="noopener" class="btn" aria-label="Source Code of Blog Platform on GitHub">Source Code</a>
+        <span>Full-stack blog platform built with Node.js and Express.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="certificates">
+    <h2>Certificates</h2>
+    <ul>
+      <li>
+        <a href="https://www.coursera.org/account/accomplishments/certificate/ABC123" target="_blank" rel="noopener" class="btn" aria-label="View JavaScript Algorithms Certificate on Coursera">View Certificate</a>
+        <span>JavaScript Algorithms and Data Structures - Coursera</span>
+      </li>
+      <li>
+        <a href="https://www.udemy.com/certificate/XYZ456" target="_blank" rel="noopener" class="btn" aria-label="View React Developer Certificate on Udemy">View Certificate</a>
+        <span>React - The Complete Guide - Udemy</span>
+      </li>
+      <li>
+        <a href="https://www.edx.org/certificates/DEF789" target="_blank" rel="noopener" class="btn" aria-label="View Python for Everybody Certificate on edX">View Certificate</a>
+        <span>Python for Everybody - edX</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="coding-clubs">
+    <h2>Coding Clubs</h2>
+    <ul>
+      <li>
+        <a href="https://www.meetup.com/Tech-Coders-Bangalore" target="_blank" rel="noopener" class="btn" aria-label="Tech Coders Bangalore Meetup Group">Tech Coders Bangalore</a>
+        <span>Active member of local meetup group focused on tech talks and hackathons.</span>
+      </li>
+      <li>
+        <a href="https://www.hackerrank.com" target="_blank" rel="noopener" class="btn" aria-label="HackerRank Coding Platform">HackerRank</a>
+        <span>Regular participant in coding challenges and competitions.</span>
+      </li>
+      <li>
+        <a href="https://leetcode.com" target="_blank" rel="noopener" class="btn" aria-label="LeetCode Coding Platform">LeetCode</a>
+        <span>Practicing algorithm problems to improve problem-solving skills.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="resume">
+    <h2>Resume</h2>
+    <p>You can download my resume for detailed information about my skills, projects, and experience.</p>
+    <a href="resume.pdf" download class="btn" aria-label="Download Resume">Download Resume</a>
+  </section>
+
+  <section class="job-preferences">
+    <h2>What I’m Looking For</h2>
+    <p>I am seeking a challenging full-stack developer position in a dynamic organization where I can contribute my skills in JavaScript, React, Node.js, and Python to build scalable, innovative web applications. I am particularly interested in roles that encourage continuous learning, collaboration, and open-source contributions change into high animation and design with suitable button 
+
+
